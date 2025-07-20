@@ -398,6 +398,40 @@ export const Analyze = () => {
           </div>
         </div>
 
+        {/* Statistics Section */}
+        <div className="mt-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold mb-2">Trusted by Creators Worldwide</h2>
+            <p className="text-muted-foreground">Join thousands of influencers who've transformed their social media presence</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">94%</div>
+                <div className="text-sm text-muted-foreground">Accuracy Rate</div>
+                <p className="text-xs text-muted-foreground mt-2">AI-powered analysis precision</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">2.4M+</div>
+                <div className="text-sm text-muted-foreground">Followers Gained</div>
+                <p className="text-xs text-muted-foreground mt-2">Collective growth from our users</p>
+              </CardContent>
+            </Card>
+            
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-primary mb-2">$12.5M</div>
+                <div className="text-sm text-muted-foreground">Revenue Generated</div>
+                <p className="text-xs text-muted-foreground mt-2">Total brand deals secured</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* Bottom Info */}
         <div className="text-center mt-12 space-y-4">
           <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">

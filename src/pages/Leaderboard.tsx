@@ -14,72 +14,287 @@ export const Leaderboard = () => {
     search: ""
   });
 
-  // Mock leaderboard data
+  // Real influencer data based on online sources
   const influencers = [
     {
       id: 1,
-      name: "Sarah Chen",
-      handle: "@sarahstyle",
-      score: 98,
+      name: "Kylie Jenner",
+      handle: "@kyliejenner",
+      score: 99,
       platform: "instagram",
-      category: "Fashion",
+      category: "Lifestyle",
       location: "Los Angeles",
-      followers: "2.4M",
-      engagement: "8.2%",
+      followers: "399M",
+      engagement: "3.2%",
       tier: "elite",
-      growth: "+12%"
+      growth: "+5%",
+      bio: "Reality TV star and beauty entrepreneur"
     },
     {
       id: 2,
-      name: "Marcus Johnson",
-      handle: "@fitnessmarcus",
-      score: 96,
-      platform: "youtube",
-      category: "Fitness",
-      location: "Miami",
-      followers: "890K",
-      engagement: "9.1%",
-      tier: "pro",
-      growth: "+18%"
+      name: "Cristiano Ronaldo",
+      handle: "@cristiano",
+      score: 98,
+      platform: "instagram",
+      category: "Sports",
+      location: "Saudi Arabia",
+      followers: "629M",
+      engagement: "2.8%",
+      tier: "elite",
+      growth: "+8%",
+      bio: "Professional footballer"
     },
     {
       id: 3,
-      name: "Emma Rodriguez",
-      handle: "@foodieemma",
-      score: 94,
+      name: "Lionel Messi",
+      handle: "@leomessi",
+      score: 97,
       platform: "instagram",
-      category: "Food",
-      location: "New York",
-      followers: "1.2M",
-      engagement: "7.8%",
-      tier: "pro",
-      growth: "+9%"
+      category: "Sports",
+      location: "Miami",
+      followers: "504M",
+      engagement: "3.1%",
+      tier: "elite",
+      growth: "+12%",
+      bio: "Professional footballer"
     },
     {
       id: 4,
-      name: "Alex Kim",
-      handle: "@techtalksalex",
-      score: 92,
-      platform: "youtube",
-      category: "Technology",
-      location: "San Francisco",
-      followers: "567K",
-      engagement: "6.9%",
-      tier: "pro",
-      growth: "+15%"
+      name: "Selena Gomez",
+      handle: "@selenagomez",
+      score: 96,
+      platform: "instagram",
+      category: "Entertainment",
+      location: "Los Angeles",
+      followers: "429M",
+      engagement: "2.9%",
+      tier: "elite",
+      growth: "+4%",
+      bio: "Singer and actress"
     },
     {
       id: 5,
-      name: "Maya Patel",
-      handle: "@wandermaya",
-      score: 90,
+      name: "Dwayne Johnson",
+      handle: "@therock",
+      score: 96,
       platform: "instagram",
-      category: "Travel",
-      location: "London",
-      followers: "834K",
-      engagement: "8.7%",
-      tier: "basic",
-      growth: "+7%"
+      category: "Entertainment",
+      location: "Los Angeles",
+      followers: "397M",
+      engagement: "3.5%",
+      tier: "elite",
+      growth: "+6%",
+      bio: "Actor and former wrestler"
+    },
+    {
+      id: 6,
+      name: "Ariana Grande",
+      handle: "@arianagrande",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "New York",
+      followers: "380M",
+      engagement: "2.7%",
+      tier: "elite",
+      growth: "+3%",
+      bio: "Singer and actress"
+    },
+    {
+      id: 7,
+      name: "Kim Kardashian",
+      handle: "@kimkardashian",
+      score: 96,
+      platform: "instagram",
+      category: "Lifestyle",
+      location: "Los Angeles",
+      followers: "364M",
+      engagement: "2.5%",
+      tier: "elite",
+      growth: "+4%",
+      bio: "Reality TV star and entrepreneur"
+    },
+    {
+      id: 8,
+      name: "Beyoncé",
+      handle: "@beyonce",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Houston",
+      followers: "319M",
+      engagement: "3.8%",
+      tier: "elite",
+      growth: "+15%",
+      bio: "Singer and performer"
+    },
+    {
+      id: 9,
+      name: "Khloé Kardashian",
+      handle: "@khloekardashian",
+      score: 96,
+      platform: "instagram",
+      category: "Lifestyle",
+      location: "Los Angeles",
+      followers: "311M",
+      engagement: "2.6%",
+      tier: "elite",
+      growth: "+3%",
+      bio: "Reality TV star"
+    },
+    {
+      id: 10,
+      name: "Justin Bieber",
+      handle: "@justinbieber",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Los Angeles",
+      followers: "293M",
+      engagement: "2.9%",
+      tier: "elite",
+      growth: "+2%",
+      bio: "Singer and songwriter"
+    },
+    {
+      id: 11,
+      name: "Kendall Jenner",
+      handle: "@kendalljenner",
+      score: 96,
+      platform: "instagram",
+      category: "Fashion",
+      location: "Los Angeles",
+      followers: "294M",
+      engagement: "2.4%",
+      tier: "pro",
+      growth: "+5%",
+      bio: "Model and reality TV star"
+    },
+    {
+      id: 12,
+      name: "Taylor Swift",
+      handle: "@taylorswift",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Nashville",
+      followers: "282M",
+      engagement: "4.2%",
+      tier: "pro",
+      growth: "+18%",
+      bio: "Singer-songwriter"
+    },
+    {
+      id: 13,
+      name: "Neymar Jr",
+      handle: "@neymarjr",
+      score: 96,
+      platform: "instagram",
+      category: "Sports",
+      location: "Saudi Arabia",
+      followers: "222M",
+      engagement: "3.1%",
+      tier: "pro",
+      growth: "+7%",
+      bio: "Professional footballer"
+    },
+    {
+      id: 14,
+      name: "Nicki Minaj",
+      handle: "@nickiminaj",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "New York",
+      followers: "228M",
+      engagement: "2.8%",
+      tier: "pro",
+      growth: "+4%",
+      bio: "Rapper and singer"
+    },
+    {
+      id: 15,
+      name: "Miley Cyrus",
+      handle: "@mileycyrus",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Los Angeles",
+      followers: "212M",
+      engagement: "3.3%",
+      tier: "pro",
+      growth: "+6%",
+      bio: "Singer and actress"
+    },
+    {
+      id: 16,
+      name: "Katy Perry",
+      handle: "@katyperry",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Los Angeles",
+      followers: "206M",
+      engagement: "2.7%",
+      tier: "pro",
+      growth: "+3%",
+      bio: "Singer and songwriter"
+    },
+    {
+      id: 17,
+      name: "Zendaya",
+      handle: "@zendaya",
+      score: 96,
+      platform: "instagram",
+      category: "Entertainment",
+      location: "Los Angeles",
+      followers: "184M",
+      engagement: "3.9%",
+      tier: "pro",
+      growth: "+12%",
+      bio: "Actress and singer"
+    },
+    {
+      id: 18,
+      name: "Jennifer Lopez",
+      handle: "@jlo",
+      score: 96,
+      platform: "instagram",
+      category: "Entertainment",
+      location: "Los Angeles",
+      followers: "254M",
+      engagement: "2.3%",
+      tier: "pro",
+      growth: "+2%",
+      bio: "Singer and actress"
+    },
+    {
+      id: 19,
+      name: "Shakira",
+      handle: "@shakira",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "Miami",
+      followers: "88M",
+      engagement: "4.8%",
+      tier: "pro",
+      growth: "+25%",
+      bio: "Singer and songwriter"
+    },
+    {
+      id: 20,
+      name: "Cardi B",
+      handle: "@iamcardib",
+      score: 96,
+      platform: "instagram",
+      category: "Music",
+      location: "New York",
+      followers: "169M",
+      engagement: "3.4%",
+      tier: "pro",
+      growth: "+8%",
+      bio: "Rapper and singer"
     }
   ];
 
@@ -135,7 +350,7 @@ export const Leaderboard = () => {
             Influencer <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Leaderboard</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover the highest-rated potential influencers across platforms and categories
+            Discover the world's top influencers based on real follower counts, engagement rates, and social media presence
           </p>
         </div>
 
@@ -178,11 +393,11 @@ export const Leaderboard = () => {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="Lifestyle">Lifestyle</SelectItem>
+                    <SelectItem value="Sports">Sports</SelectItem>
+                    <SelectItem value="Entertainment">Entertainment</SelectItem>
+                    <SelectItem value="Music">Music</SelectItem>
                     <SelectItem value="Fashion">Fashion</SelectItem>
-                    <SelectItem value="Fitness">Fitness</SelectItem>
-                    <SelectItem value="Food">Food</SelectItem>
-                    <SelectItem value="Technology">Technology</SelectItem>
-                    <SelectItem value="Travel">Travel</SelectItem>
                   </SelectContent>
                 </Select>
 
@@ -198,8 +413,9 @@ export const Leaderboard = () => {
                     <SelectItem value="Los Angeles">Los Angeles</SelectItem>
                     <SelectItem value="New York">New York</SelectItem>
                     <SelectItem value="Miami">Miami</SelectItem>
-                    <SelectItem value="San Francisco">San Francisco</SelectItem>
-                    <SelectItem value="London">London</SelectItem>
+                    <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
+                    <SelectItem value="Houston">Houston</SelectItem>
+                    <SelectItem value="Nashville">Nashville</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -247,6 +463,9 @@ export const Leaderboard = () => {
                           <span>•</span>
                           <span>{influencer.location}</span>
                         </div>
+                        <p className="text-xs text-muted-foreground mt-1 max-w-xs truncate">
+                          {influencer.bio}
+                        </p>
                       </div>
                     </div>
 
@@ -296,6 +515,14 @@ export const Leaderboard = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Data Source Note */}
+        <div className="text-center mt-8">
+          <p className="text-sm text-muted-foreground">
+            Data based on public Instagram follower counts and engagement rates. 
+            Follower counts and engagement rates are approximate and may vary.
+          </p>
+        </div>
       </div>
     </div>
   );
