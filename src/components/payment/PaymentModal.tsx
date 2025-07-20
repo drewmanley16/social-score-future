@@ -9,7 +9,7 @@ import { stripePromise, SUBSCRIPTION_PLANS, isStripeConfigured } from "@/lib/str
 interface PaymentModalProps {
   isOpen: boolean;
   onClose: () => void;
-  plan: 'BASIC' | 'PRO';
+  plan: 'BASIC' | 'PRO' | 'ELITE';
 }
 
 export const PaymentModal = ({ isOpen, onClose, plan }: PaymentModalProps) => {

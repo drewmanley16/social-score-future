@@ -1,10 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Debug: Check if environment variables are loaded
+console.log('🔧 Environment Check:');
+console.log('STRIPE_SECRET_KEY:', process.env.STRIPE_SECRET_KEY ? '✅ Loaded' : '❌ Missing');
+console.log('STRIPE_PRO_PRICE_ID:', process.env.STRIPE_PRO_PRICE_ID ? '✅ Loaded' : '❌ Missing');
+console.log('STRIPE_BASIC_PRICE_ID:', process.env.STRIPE_BASIC_PRICE_ID ? '✅ Loaded' : '❌ Missing');
 
 // Middleware
 app.use(cors({
@@ -37,9 +43,22 @@ app.post('/api/create-checkout-session', async (req, res) => {
     }
 
     // Define price IDs based on plan
-    const priceId = plan === 'PRO' 
-      ? process.env.STRIPE_PRO_PRICE_ID 
-      : process.env.STRIPE_BASIC_PRICE_ID;
+    let priceId;
+    switch (plan) {
+      case 'BASIC':
+        priceId = process.env.STRIPE_BASIC_PRICE_ID;
+        break;
+      case 'PRO':
+        priceId = process.env.STRIPE_PRO_PRICE_ID;
+        break;
+      case 'ELITE':
+        priceId = process.env.STRIPE_ELITE_PRICE_ID;
+        break;
+      default:
+        return res.status(400).json({ 
+          error: 'Invalid plan. Must be BASIC, PRO, or ELITE' 
+        });
+    }
 
     if (!priceId) {
       return res.status(500).json({ 

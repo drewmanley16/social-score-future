@@ -2,8 +2,39 @@ import { Check, Crown, Zap, Star, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { PaymentModal } from "@/components/payment/PaymentModal";
 
 export const Pricing = () => {
+  const { user } = useAuth();
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<'BASIC' | 'PRO' | 'ELITE' | null>(null);
+
+  const handlePlanSelect = (planName: string) => {
+    if (!user) {
+      // Show login prompt
+      alert("Please log in to purchase a plan. You can use the login button in the navigation.");
+      return;
+    }
+    
+    // Map plan names to PaymentModal plan types
+    const planMap: { [key: string]: 'BASIC' | 'PRO' | 'ELITE' } = {
+      'Pro': 'PRO',
+      'Elite': 'ELITE',
+      'Free': 'BASIC'
+    };
+    
+    const planType = planMap[planName];
+    if (!planType) {
+      alert("Invalid plan selected");
+      return;
+    }
+    
+    setSelectedPlan(planType);
+    setShowPaymentModal(true);
+  };
+
   const plans = [
     {
       name: "Free",
@@ -44,7 +75,8 @@ export const Pricing = () => {
       ],
       cta: "Upgrade to Pro",
       variant: "default" as const,
-      popular: true
+      popular: true,
+      stripePriceId: "price_1RmqmNI75fIf2Qr4u8mxVukD"
     },
     {
       name: "Elite",
@@ -65,7 +97,8 @@ export const Pricing = () => {
       ],
       cta: "Go Elite",
       variant: "default" as const,
-      popular: false
+      popular: false,
+      stripePriceId: "price_1RmqmNI75fIf2Qr4u8mxVukD"
     }
   ];
 
@@ -89,7 +122,7 @@ export const Pricing = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-16 py-8">
+    <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
@@ -156,6 +189,7 @@ export const Pricing = () => {
                   <Button 
                     className={`w-full ${plan.popular ? 'btn-gradient' : 'btn-secondary'}`}
                     variant={plan.variant}
+                    onClick={() => handlePlanSelect(plan.name)}
                   >
                     {plan.cta}
                   </Button>
@@ -202,11 +236,23 @@ export const Pricing = () => {
                   <div className="text-2xl font-bold text-primary">Pro Annual</div>
                   <div className="text-muted-foreground">$99/year</div>
                   <div className="text-sm text-success">Save $20</div>
+                  <Button 
+                    className="mt-2 btn-gradient"
+                    onClick={() => handlePlanSelect('Pro')}
+                  >
+                    Get Pro Annual
+                  </Button>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-accent">Elite Annual</div>
                   <div className="text-muted-foreground">$199/year</div>
                   <div className="text-sm text-success">Save $40</div>
+                  <Button 
+                    className="mt-2 btn-gradient"
+                    onClick={() => handlePlanSelect('Elite')}
+                  >
+                    Get Elite Annual
+                  </Button>
                 </div>
               </div>
             </div>
@@ -236,13 +282,26 @@ export const Pricing = () => {
               <p className="text-muted-foreground max-w-md mx-auto">
                 Join thousands of creators who have transformed their social media presence
               </p>
-              <Button size="lg" className="btn-gradient text-lg px-8 py-4">
+              <Button 
+                size="lg" 
+                className="btn-gradient text-lg px-8 py-4"
+                onClick={() => handlePlanSelect('Free')}
+              >
                 Start Your Free Analysis
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
+
+      {/* Payment Modal */}
+      {showPaymentModal && selectedPlan && (
+        <PaymentModal
+          isOpen={showPaymentModal}
+          onClose={() => setShowPaymentModal(false)}
+          plan={selectedPlan}
+        />
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, Camera, Instagram, MessageCircle, Heart, Share2, TrendingUp, Lock, Crown } from "lucide-react";
+import { Upload, Camera, Instagram, MessageCircle, Heart, Share2, TrendingUp, Lock, Crown, Star, Zap, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,7 +56,7 @@ export const Analyze = () => {
 
   if (isAnalyzing) {
     return (
-      <div className="min-h-screen pt-16 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-6">
           <div className="w-16 h-16 mx-auto gradient-primary rounded-full flex items-center justify-center shadow-glow animate-pulse">
             <TrendingUp className="h-8 w-8 text-white" />
@@ -73,7 +73,7 @@ export const Analyze = () => {
 
   if (isAnalyzed) {
     return (
-      <div className="min-h-screen pt-16 py-8">
+      <div className="min-h-screen py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           {/* Profile Header */}
           <Card className="glass-card border-glass-border">
@@ -198,92 +198,229 @@ export const Analyze = () => {
   }
 
   return (
-    <div className="min-h-screen pt-16 py-8">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-6 mb-12">
-          <h1 className="text-3xl lg:text-4xl font-bold">
+    <div className="min-h-screen py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <div className="text-center space-y-8 mb-16">
+          <div className="inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-6 py-3 text-sm font-medium text-primary mb-6">
+            <TrendingUp className="h-4 w-4" />
+            <span>AI-Powered Analysis</span>
+          </div>
+          <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
             Analyze Your <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Profile</span>
           </h1>
-          <p className="text-lg text-muted-foreground">
-            Upload your profile and get instant AI-powered insights into your influencer potential
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Get instant AI-powered insights into your influencer potential. Discover your score, 
+            receive personalized growth strategies, and unlock your path to success.
           </p>
         </div>
 
-        <Card className="glass-card border-glass-border shadow-glass">
-          <CardContent className="p-8 space-y-6">
-            {/* Platform Selection */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Select Platform</label>
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { name: 'Instagram', icon: Instagram, value: 'instagram' },
-                  { name: 'TikTok', icon: MessageCircle, value: 'tiktok' },
-                  { name: 'YouTube', icon: Camera, value: 'youtube' }
-                ].map((platform) => (
-                  <button
-                    key={platform.value}
-                    onClick={() => setProfileData({ ...profileData, platform: platform.value })}
-                    className={`p-4 rounded-lg border transition-all duration-300 ${
-                      profileData.platform === platform.value
-                        ? 'border-primary bg-primary/10 text-primary'
-                        : 'border-glass-border hover:border-primary/50'
-                    }`}
-                  >
-                    <platform.icon className="h-6 w-6 mx-auto mb-2" />
-                    <span className="text-sm font-medium">{platform.name}</span>
-                  </button>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Analysis Form */}
+          <div className="lg:col-span-2">
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardContent className="p-8 space-y-8">
+                {/* Platform Selection */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                    <label className="text-lg font-semibold">Select Your Platform</label>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
+                    {[
+                      { name: 'Instagram', icon: Instagram, value: 'instagram', description: 'Photo & video sharing' },
+                      { name: 'TikTok', icon: MessageCircle, value: 'tiktok', description: 'Short-form videos' },
+                      { name: 'YouTube', icon: Camera, value: 'youtube', description: 'Long-form content' }
+                    ].map((platform) => (
+                      <button
+                        key={platform.value}
+                        onClick={() => setProfileData({ ...profileData, platform: platform.value })}
+                        className={`p-6 rounded-xl border transition-all duration-300 text-center ${
+                          profileData.platform === platform.value
+                            ? 'border-primary bg-primary/10 text-primary shadow-glow'
+                            : 'border-glass-border hover:border-primary/50 hover:bg-primary/5'
+                        }`}
+                      >
+                        <platform.icon className="h-8 w-8 mx-auto mb-3" />
+                        <div className="font-semibold text-base">{platform.name}</div>
+                        <div className="text-xs text-muted-foreground mt-1">{platform.description}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Username Input */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                    <label className="text-lg font-semibold">Your Profile</label>
+                  </div>
+                  <Input
+                    placeholder="Enter your @username or profile URL"
+                    value={profileData.username}
+                    onChange={(e) => setProfileData({ ...profileData, username: e.target.value })}
+                    className="glass-card border-glass-border h-14 text-lg"
+                  />
+                  <p className="text-sm text-muted-foreground">
+                    Example: @username or https://instagram.com/username
+                  </p>
+                </div>
+
+                {/* Profile Image Upload */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 rounded-full bg-primary"></div>
+                    <label className="text-lg font-semibold">Profile Image (Optional)</label>
+                  </div>
+                  <div className="border-2 border-dashed border-glass-border rounded-xl p-12 text-center hover:border-primary/50 transition-colors">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                      id="image-upload"
+                    />
+                    <label htmlFor="image-upload" className="cursor-pointer space-y-4">
+                      <Upload className="h-12 w-12 mx-auto text-muted-foreground" />
+                      <div>
+                        <p className="text-lg font-medium">Upload your profile image</p>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          Click to upload or drag and drop your profile image
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <Button 
+                  onClick={handleAnalyze}
+                  disabled={!profileData.username}
+                  className="w-full btn-gradient text-xl py-8 text-lg font-semibold"
+                >
+                  <TrendingUp className="mr-3 h-6 w-6" />
+                  Analyze My Profile
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Information Sidebar */}
+          <div className="space-y-6">
+            {/* What You'll Get */}
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Star className="h-5 w-5 text-primary" />
+                  <span>What You'll Get</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Influencer Score</p>
+                    <p className="text-sm text-muted-foreground">0-100 rating of your potential</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Content Analysis</p>
+                    <p className="text-sm text-muted-foreground">Style, quality, and engagement insights</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Growth Opportunities</p>
+                    <p className="text-sm text-muted-foreground">Identify areas for improvement</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Audience Insights</p>
+                    <p className="text-sm text-muted-foreground">Understand your follower demographics</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* How It Works */}
+            <Card className="glass-card border-glass-border shadow-glass">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Zap className="h-5 w-5 text-primary" />
+                  <span>How It Works</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-primary text-white text-xs flex items-center justify-center font-bold">1</div>
+                  <div>
+                    <p className="font-semibold">Enter Your Profile</p>
+                    <p className="text-sm text-muted-foreground">Provide your username or profile URL</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-primary text-white text-xs flex items-center justify-center font-bold">2</div>
+                  <div>
+                    <p className="font-semibold">AI Analysis</p>
+                    <p className="text-sm text-muted-foreground">Our AI analyzes your content and engagement</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-6 h-6 rounded-full bg-primary text-white text-xs flex items-center justify-center font-bold">3</div>
+                  <div>
+                    <p className="font-semibold">Get Results</p>
+                    <p className="text-sm text-muted-foreground">Receive your score and personalized insights</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Upgrade CTA */}
+            <Card className="glass-card border-glass-border shadow-glass bg-gradient-to-br from-primary/10 to-accent/10">
+              <CardContent className="p-6 text-center space-y-4">
+                <Crown className="h-8 w-8 mx-auto text-primary" />
+                <h3 className="font-semibold">Unlock Premium Insights</h3>
+                <p className="text-sm text-muted-foreground">
+                  Get detailed growth strategies, optimal posting times, and personalized recommendations
+                </p>
+                <Link to="/pricing">
+                  <Button className="btn-gradient w-full">
+                    <Crown className="mr-2 h-4 w-4" />
+                    Upgrade to Pro
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
+        {/* Bottom Info */}
+        <div className="text-center mt-12 space-y-4">
+          <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
+            <div className="flex items-center space-x-2">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-6 h-6 rounded-full bg-gradient-to-r from-primary to-accent border-2 border-background" />
                 ))}
               </div>
+              <span>10,000+ profiles analyzed</span>
             </div>
-
-            {/* Username Input */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Username or Profile URL</label>
-              <Input
-                placeholder="Enter your @username or profile URL"
-                value={profileData.username}
-                onChange={(e) => setProfileData({ ...profileData, username: e.target.value })}
-                className="glass-card border-glass-border"
-              />
+            <div className="flex items-center space-x-2">
+              <Clock className="h-4 w-4" />
+              <span>Results in 30 seconds</span>
             </div>
-
-            {/* Profile Image Upload */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Profile Image (Optional)</label>
-              <div className="border-2 border-dashed border-glass-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                  id="image-upload"
-                />
-                <label htmlFor="image-upload" className="cursor-pointer space-y-2">
-                  <Upload className="h-8 w-8 mx-auto text-muted-foreground" />
-                  <p className="text-sm text-muted-foreground">
-                    Click to upload or drag and drop your profile image
-                  </p>
-                </label>
-              </div>
-            </div>
-
-            <Button 
-              onClick={handleAnalyze}
-              disabled={!profileData.username}
-              className="w-full btn-gradient text-lg py-6"
-            >
-              <TrendingUp className="mr-2 h-5 w-5" />
-              Analyze My Profile
-            </Button>
-
-            <div className="text-center text-sm text-muted-foreground">
-              <p>Free analysis includes basic scoring and insights.</p>
-              <Link to="/pricing" className="text-primary hover:underline">
-                Upgrade for detailed recommendations →
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Free analysis includes basic scoring and insights. 
+            <Link to="/pricing" className="text-primary hover:underline ml-1">
+              Upgrade for detailed recommendations →
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

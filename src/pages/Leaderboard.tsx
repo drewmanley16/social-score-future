@@ -123,7 +123,7 @@ export const Leaderboard = () => {
   });
 
   return (
-    <div className="min-h-screen pt-16 py-8">
+    <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center space-y-4 mb-12">
