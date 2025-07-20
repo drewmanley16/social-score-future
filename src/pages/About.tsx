@@ -28,9 +28,9 @@ export const About = () => {
 
   const stats = [
     { label: "Creators Analyzed", value: "50K+" },
-    { label: "Average Score Improvement", value: "23%" },
     { label: "Success Rate", value: "89%" },
-    { label: "Platforms Supported", value: "3+" }
+    { label: "Platforms Supported", value: "3+" },
+    { label: "Metrics Analyzed", value: "10+" }
   ];
 
   return (
