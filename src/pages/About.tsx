@@ -1,4 +1,4 @@
-import { Brain, Shield, Users, Target, ChevronRight, Linkedin, Twitter } from "lucide-react";
+import { Brain, Shield, Users, Target, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -23,33 +23,6 @@ export const About = () => {
       icon: Target,
       title: "Results-Driven",
       description: "Our algorithms are constantly learning and improving based on real creator success stories and industry best practices."
-    }
-  ];
-
-  const team = [
-    {
-      name: "Sarah Martinez",
-      role: "CEO & Co-Founder",
-      bio: "Former head of creator partnerships at a major social media platform. Passionate about empowering the next generation of digital creators.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b1e"
-    },
-    {
-      name: "David Chen",
-      role: "CTO & Co-Founder",
-      bio: "AI researcher with 10+ years in machine learning. Previously led recommendation systems at top tech companies.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-    },
-    {
-      name: "Maya Patel",
-      role: "Head of Product",
-      bio: "Product leader with expertise in creator tools and social media analytics. Focused on user-centric design.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80"
-    },
-    {
-      name: "Alex Thompson",
-      role: "Lead Data Scientist",
-      bio: "PhD in Computer Science specializing in social network analysis and natural language processing.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
     }
   ];
 
@@ -118,43 +91,6 @@ export const About = () => {
                   </div>
                   <h3 className="text-xl font-semibold">{value.title}</h3>
                   <p className="text-muted-foreground text-sm">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Team Section */}
-        <div className="space-y-12 mb-20">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Meet the Team</h2>
-            <p className="text-lg text-muted-foreground">
-              The experts behind InfluenceIQ's AI-powered insights
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="glass-card border-glass-border hover:shadow-glass transition-all duration-300">
-                <CardContent className="p-6 text-center space-y-4">
-                  <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-r from-primary to-accent p-1">
-                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary to-accent" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">{member.name}</h3>
-                    <p className="text-primary text-sm font-medium">{member.role}</p>
-                  </div>
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
-                  <div className="flex justify-center space-x-3">
-                    <Button variant="ghost" size="sm" className="p-2">
-                      <Linkedin className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="sm" className="p-2">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             ))}

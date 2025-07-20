@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Star, TrendingUp, Users, Zap, ChevronRight, Play } from "lucide-react";
+import { ArrowRight, Star, TrendingUp, Users, Zap, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroImage from "@/assets/hero-dashboard.jpg";
@@ -82,14 +82,6 @@ export const Home = () => {
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="btn-secondary text-lg px-8 py-4 group"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  Watch Demo
-                </Button>
               </div>
 
               <div className="flex items-center space-x-8 text-sm text-muted-foreground">
@@ -100,12 +92,6 @@ export const Home = () => {
                     ))}
                   </div>
                   <span>10,000+ creators analyzed</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <span className="ml-1">4.9/5 rating</span>
                 </div>
               </div>
             </div>

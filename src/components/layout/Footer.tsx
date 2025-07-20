@@ -50,9 +50,6 @@ export const Footer = () => {
               <Link to="/pricing" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 Pricing
               </Link>
-              <Link to="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                API Access
-              </Link>
             </div>
           </div>
 
@@ -63,15 +60,6 @@ export const Footer = () => {
               <Link to="/about" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 About Us
               </Link>
-              <Link to="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                Careers
-              </Link>
-              <Link to="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                Contact
-              </Link>
-              <Link to="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                Blog
-              </Link>
             </div>
           </div>
 
@@ -79,35 +67,23 @@ export const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-sm font-semibold text-foreground">Stay Updated</h3>
             <p className="text-sm text-muted-foreground">
-              Get the latest insights and tips for growing your influence.
+              Get the latest insights on influencer growth and social media trends.
             </p>
             <div className="flex space-x-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="glass-card border-glass-border"
+              <Input 
+                type="email" 
+                placeholder="Enter your email" 
+                className="flex-1"
               />
-              <Button size="sm" className="btn-gradient whitespace-nowrap">
+              <Button size="sm" className="btn-gradient">
                 Subscribe
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Bottom section */}
-        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between">
-          <div className="flex space-x-6 text-sm text-muted-foreground">
-            <Link to="#" className="hover:text-primary transition-colors">
-              Privacy Policy
-            </Link>
-            <Link to="#" className="hover:text-primary transition-colors">
-              Terms of Service
-            </Link>
-            <Link to="#" className="hover:text-primary transition-colors">
-              Cookie Policy
-            </Link>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4 md:mt-0">
+        <div className="border-t border-border mt-8 pt-8 text-center">
+          <p className="text-sm text-muted-foreground">
             © 2024 InfluenceIQ. All rights reserved.
           </p>
         </div>
